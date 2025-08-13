@@ -1,6 +1,5 @@
 # Convert three data csv files into one csv containing: Sales, Date and Region
 
-# New file 'clean_data.csv' is stored in 'data' folder
 
 #Use os package to get all files in data directory
 import os
@@ -25,10 +24,14 @@ def prepare_data(filepath):
                 new_data.append(f"{sale}, {date}, {region}")
 
     # add contents of new data list to 'clean_data.csv'
-    with open("data/clean_data.csv", "a") as writefile:
+    with open("clean_data.csv", "a") as writefile:
         for entry in new_data:
             writefile.write(entry + "\n")
 
+
+# Add header to csv
+with open("clean_data.csv", "a") as writefile:
+    writefile.write("sales,date,region" + "\n")
 
 # run through all files and call prepare_data
 for file in os.scandir("data"):
