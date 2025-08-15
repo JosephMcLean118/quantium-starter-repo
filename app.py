@@ -16,36 +16,31 @@ df = df.sort_values(by='date')
 
 #create line chart
 fig = px.line(df, x="date", y="sales", title="Price Visualisation")
+graph = dcc.Graph(
+            id='pink-morsel-graph',
+            figure=fig
+    )
 
-#apply styles to line chart
-fig.update_layout(
-    plot_bgcolor=colors['background'],
-    paper_bgcolor=colors['background'],
-    font_color=colors['text']
-)
-
-#create app layout (main header, subheader, graph)
-app.layout = html.Div(
+#create header
+header = html.H1(
+    "Pink Morsels Price Trend Over Time",
+    id = "header",
     style={
-        'backgroundColor': colors['background'],
-        'fontFamily': 'Open Sans, verdana, arial, sans-serif',
-        'margin': '20',
-        'padding': '20',
-        'height': '50vh'}, children=[
-    html.H1(
-        children='Pink Morsels Price Trend Over Time',
-        style={
             'paddingTop': '0px',
             'textAlign': 'center',
             'color': colors['text']
         }
-    ),
+)
 
-    dcc.Graph(
-        id='pink-morsel-graph',
-        figure=fig
-    )
-])
+#create app layout (header, graph)
+app.layout = html.Div(
+    [
+        header,
+        graph
+    ]
+)
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
