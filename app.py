@@ -9,16 +9,22 @@ colors = {
     'text': '#7FDBFF'
 }
 
-df = pd.read_csv('clean_data.csv')
 
+#load in data
+df = pd.read_csv('clean_data.csv')
+df = df.sort_values(by='date')
+
+#create line chart
 fig = px.line(df, x="date", y="sales", title="Price Visualisation")
 
+#apply styles to line chart
 fig.update_layout(
     plot_bgcolor=colors['background'],
     paper_bgcolor=colors['background'],
     font_color=colors['text']
 )
 
+#create app layout (main header, subheader, graph)
 app.layout = html.Div(
     style={
         'backgroundColor': colors['background'],
