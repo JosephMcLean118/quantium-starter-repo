@@ -1,3 +1,35 @@
-html {
-    background-color: #111111;
+body{
+    background-color: #F4F4F4;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#pink-morsel-graph{
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    margin-top:2rem
+}
+#radio-input{
+    text-align: center;
+}
+
+#radio-input input{
+    margin: 20px 40px 0px 40px;
+
+}
+#header{
+    text-align: center;
+    font-weight: bold;
+    padding-top: 10px;
+}
+
+#radio-input{
+    margin:auto;
+    width: 80%;
+    background-color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+    color: black;
+    font-size: 20px;
+    padding-bottom: 10px;
 }
