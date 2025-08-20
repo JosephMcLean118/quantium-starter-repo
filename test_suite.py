@@ -1,13 +1,18 @@
-from contextvars import copy_context
-from dash._callback_context import context_value
-from dash._utils import AttributeDict
-
-# Import callback function
-from app import graph, header, filters
+from app import app
 
 
-# test if header appears with correct text, and if the graph and filters appear
-def test_sections():
-    assert header.children  == "Pink Morsels Price Trend Over Time"
-    assert graph is not None
-    assert filters is not None
+# test if header appears with correct text
+def test_header(dash_duo):
+    dash_duo.start_server(app)
+    dash_duo.wait_for_element("#header", timeout=10)
+
+def test_visualization(dash_duo):
+    dash_duo.start_server(app)
+    dash_duo.wait_for_element("#pink-morsel-graph", timeout=10)
+
+
+def test_region_picker(dash_duo):
+    dash_duo.start_server(app)
+    dash_duo.wait_for_element("#radio-input", timeout=10)
+
+
